@@ -12,7 +12,7 @@ namespace ShapeTracker.TestTools
     // NameOfMethodWeAreTesting_DescriptionOfBehavior_ExpectedReturnValue
     public void TriangleConstructor_CreatesInstanceOfTriangle_Triangle()
     {
-      Triangle newTriangle = new Triangle(2, 3);
+      Triangle newTriangle = new Triangle(2, 3, 8);
       // (the result we expect, the expression to be evaluated)
       Assert.AreEqual(typeof(Triangle), newTriangle.GetType());
     }
@@ -22,7 +22,7 @@ namespace ShapeTracker.TestTools
     {
       // Arrange
       int length1 = 3;
-      Triangle newTriangle = new Triangle(length1, 2);
+      Triangle newTriangle = new Triangle(length1, 2, 8);
       // Act
       int result = newTriangle.Side1;
       // Assert
@@ -34,7 +34,7 @@ namespace ShapeTracker.TestTools
     public void SetSide1_SetsValueOfSide1_Void()
     {
       // Arrange
-      Triangle newTriangle = new Triangle(3, 3);
+      Triangle newTriangle = new Triangle(3, 3, 8);
       int newLength1 = 44;
       // Act
       newTriangle.Side1 = newLength1;
@@ -48,7 +48,7 @@ namespace ShapeTracker.TestTools
     {
       // arrange
       int length2 = 3;
-      Triangle newTriangle = new Triangle(2, length2);
+      Triangle newTriangle = new Triangle(2, length2, 8);
       // act
       int result = newTriangle.Side2;
       // assert
@@ -60,12 +60,25 @@ namespace ShapeTracker.TestTools
     public void SetSide2_SetsValueOfSide2_Void()
     {
       // arrange
-      Triangle newTriangle = new Triangle(3, 4);
+      Triangle newTriangle = new Triangle(3, 4, 8);
       int newLength2 = 6;
       // act
       newTriangle.Side2 = newLength2;
       // assert
       Assert.AreEqual(newLength2, newTriangle.Side2);
+    }
+
+    // test 6
+    [TestMethod]
+    public void GetSide3_ReturnsSide3_Int()
+    {
+      // arrange
+      int length3 = 55;
+      Triangle newTriangle = new Triangle(2, 3, length3);
+      // act
+      int result = newTriangle.GetSide3();
+      // assert
+      Assert.AreEqual(length3, result);
     }
   }
 }
