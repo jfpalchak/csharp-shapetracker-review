@@ -1,11 +1,18 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShapeTracker.Models;
+using System.Collections.Generic; // using directive for use of List<T>
+using System; // using directive for IDisposable
 
 namespace ShapeTracker.TestTools
 {
   [TestClass]
-  public class TriangleTests
+  public class TriangleTests : IDisposable // we extend (:) functionality from the interface to our Test class
   {
+    // any code we add to Dispose automatically runs after every test
+    public void Dispose()
+    {
+      Triangle.ClearAll();
+    }
     
     [TestMethod]
     // the test naming convention:
@@ -142,5 +149,22 @@ namespace ShapeTracker.TestTools
       // assert
       Assert.AreEqual("equilateral triangle", triType);
     }
+
+    // test 12
+    // GET ALL METHOD
+    [TestMethod]
+    public void GetAll_ReturnsAllTriangleInstances_List()
+    {
+      // Arrange
+      Triangle tri1 = new Triangle(2, 2, 9);
+      Triangle tri2 = new Triangle(21, 3, 9);
+      Triangle tri3 = new Triangle(1, 3, 9);
+      List<Triangle> expected = new List<Triangle> { tri1, tri2, tri3};
+      // Act
+      List<Triangle> actualResult = Triangle.GetAll();
+      // Assert
+      CollectionAssert.AreEqual(expected, actualResult);
+    }
+
   }
 }
