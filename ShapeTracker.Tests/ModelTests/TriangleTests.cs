@@ -106,5 +106,17 @@ namespace ShapeTracker.TestTools
       // assert
       Assert.AreEqual("not a triangle", triType);
     }
+
+    // test 9
+    [TestMethod]
+    public void CheckType_DeterminesWhenScalene_String()
+    {
+      // arrange
+      Triangle scaleneTri = new Triangle(3, 4, 5);
+      // act
+      string triType = scaleneTri.CheckType();
+      // assert
+      Assert.AreEqual("scalene triangle", triType);
+    }
   }
 }
